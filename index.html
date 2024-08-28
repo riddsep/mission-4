@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo Apps</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Todo List</h1>
+      <div class="user-container">
+        <img src="profile.jpeg" alt="" />
+        <div class="user-detail">
+          <div class="user-name">Rido Septiawan</div>
+          <div class="user-role">fullstack developer</div>
+        </div>
+      </div>
+    </header>
+    <section>
+      <div class="container">
+        <h2>Tambah yang harus dilakukan</h2>
+        <form>
+          <label for="input-todo">Masukkan hal yang akan dilakukan</label>
+          <textarea name="input-todo" id="input-todo" rows="5"></textarea>
+          <label for="date">Masukkan tanggal harus selesai</label>
+          <input type="date" name="date" id="date" />
+          <label for="date">Prioritas</label>
+          <select name="prioritas" id="prioritas">
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="hight">Hight</option>
+          </select>
+          <button>Submit</button>
+        </form>
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <h2>Yang harus dilakukan</h2>
+        <ul id="todo-list"></ul>
+      </div>
+    </section>
+    <script src="index.js"></script>
+  </body>
+</html>
