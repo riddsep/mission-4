@@ -114,8 +114,9 @@ table {
 th {
   width: 100%;
   padding: 0.8rem;
-  background-color: #5f30e2;
-  color: #f5f1ff;
+  background-color: #f5f1ff;
+  color: #000;
+  border: 1px solid #5f30e2;
 }
 
 .todos {
@@ -125,6 +126,9 @@ th {
   gap: 20px;
   background-color: #f5f1ff;
   padding: 1rem;
+  box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
+    0 15px 40px rgba(166, 173, 201, 0.2);
+  border: 1px solid #5f30e2;
 }
 
 .todos-detail {
