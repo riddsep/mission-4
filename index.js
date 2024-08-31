@@ -8,12 +8,12 @@ document.addEventListener("DOMContentLoaded", () => {
 function handlerSubmit(event) {
   event.preventDefault();
 
-  //Mengambil value dari form submit
+  // Mengambil value dari form submit
   const inputTodo = document.querySelector("#input-todo").value;
-  const timeStamp = document.querySelector("#date").value;
+  const timeStamp = new Date().toLocaleDateString();
   const priority = document.querySelector("#prioritas").value;
 
-  const newTodo = { inputTodo, timeStamp, priority };
+  const newTodo = { inputTodo, timeStamp, priority, completed: false };
 
   const todos = JSON.parse(localStorage.getItem("todos")) || [];
 
@@ -29,13 +29,15 @@ function handlerSubmit(event) {
 }
 
 function displayTodos() {
-  const container = document.querySelector("tbody");
+  const activeContainer = document.querySelector("#active-todos");
+  const completedContainer = document.querySelector("#completed-todos");
 
   const todos = JSON.parse(localStorage.getItem("todos")) || [];
 
-  container.innerHTML = "";
+  activeContainer.innerHTML = "";
+  completedContainer.innerHTML = "";
 
-  todos.forEach((todo) => {
+  todos.forEach((todo, index) => {
     const trElement = document.createElement("tr");
     trElement.classList.add("todos-row");
 
@@ -48,11 +50,13 @@ function displayTodos() {
     const InputEl = document.createElement("input");
     InputEl.setAttribute("type", "checkbox");
     InputEl.setAttribute("name", "checklist");
-    InputEl.setAttribute("id", "checklist");
+    InputEl.setAttribute("id", `checklist-${index}`);
+    InputEl.checked = todo.completed;
 
     const pElement = document.createElement("p");
     pElement.classList.add("todos-text");
     pElement.textContent = todo.inputTodo;
+    pElement.style.textDecoration = todo.completed ? "line-through" : "none";
 
     const divDetail = document.createElement("div");
     divDetail.classList.add("todos-detail");
@@ -69,28 +73,39 @@ function displayTodos() {
     divElement.append(pElement, divDetail);
     tdElement.append(divElement, InputEl);
     trElement.append(tdElement);
-    container.append(trElement);
+
+    if (todo.completed) {
+      completedContainer.append(trElement);
+    } else {
+      activeContainer.append(trElement);
+    }
   });
 
-  checkbox();
+  setCheckbox();
 }
 
-function checkbox() {
-  const checkboxes = document.querySelectorAll("#checklist");
+function setCheckbox() {
+  const checkboxes = document.querySelectorAll("input[name='checklist']");
   checkboxes.forEach((checkbox, index) => {
     checkbox.addEventListener("change", () => {
       const row = checkbox.closest("tr");
       const textElement = row.querySelector(".todos-text");
       const todos = JSON.parse(localStorage.getItem("todos")) || [];
 
-      // Mengupdate status completed
       todos[index].completed = checkbox.checked;
       localStorage.setItem("todos", JSON.stringify(todos));
 
-      // Mengupdate gaya teks
       textElement.style.textDecoration = checkbox.checked
         ? "line-through"
         : "none";
+
+      displayTodos();
     });
   });
 }
+
+const clearBtn = document.querySelector("#clear-data");
+clearBtn.addEventListener("click", () => {
+  localStorage.clear();
+  displayTodos();
+});

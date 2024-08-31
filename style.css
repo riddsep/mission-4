@@ -85,7 +85,6 @@ input,
   margin-bottom: 1rem;
   font-size: 1rem;
   border: 2px solid #9475ea;
-  border-radius: 4px;
   background-color: #f5f1ff;
 }
 #input-todo {
@@ -96,12 +95,12 @@ label {
   font-size: 1rem;
 }
 button {
+  width: 100%;
   padding: 0.7rem;
   font-size: 1.2rem;
   background-color: #5f30e2;
   color: #fff;
   border: none;
-  border-radius: 4px;
   cursor: pointer;
 }
 
@@ -119,7 +118,8 @@ th {
   border: 1px solid #5f30e2;
 }
 
-.todos {
+.todos,
+.done {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -131,12 +131,14 @@ th {
   border: 1px solid #5f30e2;
 }
 
-.todos-detail {
+.todos-detail,
+.done-detail {
   display: flex;
   gap: 10px;
   margin-top: 10px;
 }
-.todos-priority {
+.todos-priority,
+.done-priority {
   background-color: #5f30e2;
   color: #f5f1ff;
   padding: 4px 10px;

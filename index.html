@@ -34,7 +34,7 @@
           <select name="prioritas" id="prioritas" required>
             <option value="low">Low</option>
             <option value="medium">Medium</option>
-            <option value="hight">Hight</option>
+            <option value="high">High</option>
           </select>
           <button>Submit</button>
         </form>
@@ -46,7 +46,7 @@
           <thead>
             <th>Todo List</th>
           </thead>
-          <tbody></tbody>
+          <tbody id="active-todos"></tbody>
         </table>
       </div>
     </section>
@@ -56,8 +56,9 @@
           <thead>
             <th>Done</th>
           </thead>
-          <tbody></tbody>
+          <tbody id="completed-todos"></tbody>
         </table>
+        <button id="clear-data">Clear</button>
       </div>
     </section>
     <script src="index.js"></script>
