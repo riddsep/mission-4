@@ -10,13 +10,14 @@
 body {
   font-family: Raleway, sans-serif;
 }
-
+.header-wrapper {
+  background-color: #5f30e2;
+}
 header {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #5f30e2;
   color: #fff;
   padding: 1rem;
 }
@@ -147,4 +148,17 @@ th {
 }
 input[type="checkbox"] {
   margin: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .header-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+  header {
+    width: 55%;
+  }
+  .container {
+    width: 55%;
+  }
 }
