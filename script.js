@@ -16,6 +16,7 @@ function addTodo() {
     if (!inputTodoEl.value) {
       return;
     }
+    inputTodoEl.value = "";
 
     todos.push({
       id,
