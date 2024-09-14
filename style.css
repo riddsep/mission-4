@@ -138,6 +138,7 @@ th {
   gap: 10px;
   margin-top: 10px;
 }
+
 .todos-priority,
 .done-priority {
   background-color: #5f30e2;
@@ -146,8 +147,24 @@ th {
   font-size: 0.8rem;
   border-radius: 10px;
 }
+
 input[type="checkbox"] {
   margin: 0;
+  width: 25px;
+  height: 25px;
+}
+#remove-btn {
+  font-size: 12px;
+  border-radius: 3px;
+}
+.button-list {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.text-decoration {
+  text-decoration: line-through;
 }
 
 @media screen and (min-width: 768px) {
